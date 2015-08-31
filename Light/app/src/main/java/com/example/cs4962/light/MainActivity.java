@@ -59,19 +59,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        /*
-        _light_switch.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                if (_light_switch.isChecked())
-                    _lightImageView.setImageResource(R.drawable.on);
-                else
-                    _lightImageView.setImageResource(R.drawable.off);
-            }
-        });
-        */
+
         setContentView(_lightlayout);
     }
 
