@@ -1,5 +1,6 @@
 package com.example.cs4962.light;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
@@ -9,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 
-public class MainActivity extends AppCompatActivity
+public class LightActivity extends AppCompatActivity
 {
     private Switch _light_switch;
     private LinearLayout _lightlayout;
@@ -18,25 +19,14 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        /*super.onCreate(savedInstanceState);
-        LinearLayout mainLayout = new LinearLayout(this);
-        ImageView lightImageView = new ImageView(this);
-        lightImageView.setImageResource(R.drawable.off);
-        mainLayout.addView(lightImageView);
-        Switch lightSwitch = new Switch(this);
-        mainLayout.addView(lightSwitch);
-        setContentView(mainLayout);
-        */
         super.onCreate(savedInstanceState);
 
         _lightlayout = new LinearLayout(this);
         _lightlayout.setOrientation(LinearLayout.VERTICAL);
-       // _lightlayout.setBackgroundColor(Color.BLACK);
-
 
         _lightImageView = new ImageView(this);
         _lightImageView.setImageResource(R.drawable.off);
-        //    _lightImageView.setBackgroundColor(Color.RED);
+
         _lightlayout.addView(_lightImageView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0,9));
 
         _light_switch = new Switch(this);
@@ -52,13 +42,14 @@ public class MainActivity extends AppCompatActivity
                 if (isChecked)
                 {
                     _lightImageView.setImageResource(R.drawable.on);
+                    _lightlayout.setBackgroundColor(Color.BLACK);
                 } else
                 {
                     _lightImageView.setImageResource(R.drawable.off);
+                    _lightlayout.setBackgroundColor(Color.WHITE);
                 }
             }
         });
-
 
         setContentView(_lightlayout);
     }
