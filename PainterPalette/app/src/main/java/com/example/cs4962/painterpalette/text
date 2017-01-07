@@ -1,0 +1,81 @@
+/*
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        Gson gson = new Gson();
+        try
+        {
+            FileWriter fileWriter = new FileWriter(file);
+            BufferedWriter writer = new BufferedWriter(fileWriter);
+            String jsonFileSize;
+            String jsonPolyPath;
+            String jsonPathColor;
+            String jsonActiveColor;
+            jsonFileSize = gson.toJson(_paintArea.getAllPaths().size()*2 + 1);
+            writer.write(jsonFileSize+"\n");
+            for (PolyPath pp : _paintArea.getAllPaths())
+            {
+                jsonPolyPath = gson.toJson(pp.getPathPoints());
+                jsonPathColor = gson.toJson(pp.getColor());
+                writer.write(jsonPolyPath+"\n");
+                writer.write(jsonPathColor+"\n");
+
+            }
+            jsonActiveColor = gson.toJson(_paintArea.getColor());
+            writer.write(jsonActiveColor + "\n");
+            writer.close();
+
+
+        }
+        catch (IOException e)
+        {
+
+        }
+    }
+
+
+
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        String jsonPolyPath;
+        String jsonPathColor;
+        String jsonActiveColor;
+        String line;
+        Gson gson = new Gson();
+        try
+        {
+            FileReader fileReader = new FileReader(file);
+            BufferedReader reader = new BufferedReader(fileReader);
+
+            int size = Integer.parseInt(reader.readLine());
+            Type pointF = new TypeToken<PointF>(){}.getType();
+
+            PolyPath temp;
+            int color;
+            for(int i = 0; i < size; i++)
+            {
+                line = reader.readLine();
+                ArrayList<PointF> pathPoints = gson.fromJson(line,pointF);
+                line = reader.readLine();
+                color = Integer.parseInt(line);
+                temp = new PolyPath(color,0,0);
+                temp.setPathPoints(pathPoints);
+            }
+
+            Gson gson = new Gson();
+            Type collectionType = new TypeToken<ArrayList<PolyPath>>()
+            {
+            }.getType();
+            ArrayList<PolyPath> lines = gson.fromJson(polyLineJson, collectionType);
+            reader.close();
+            //   _paintArea.setAllPaths(lines);
+        } catch (IOException e)
+        {
+
+        }
+    }
+*/
